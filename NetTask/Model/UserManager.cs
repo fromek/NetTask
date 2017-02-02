@@ -39,9 +39,14 @@ namespace NetTask.Model
                     if (tokenHeader != null)
                     {
                         var us = await GitHubClient.GetFromResponse(tokenHeader, typeof(List<User>));
-                        foreach (User u in us)
+                        foreach(User u in us)
                         {
                             userList.Add(u);
+                        }
+                        
+                        foreach (User u in userList)
+                        {
+                            //userList.Add(u);
                             u.repositories = await GetUserRepositories($"{u.repos_url}?&per_page=100");
                             GetUserAvatarInBackgroundWorker(u);
                         }

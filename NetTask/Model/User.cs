@@ -34,6 +34,7 @@ namespace NetTask.Model
             {
                 _repositories = value;
                 NotifyPropertyChanged();
+                NotifyPropertyChanged("repositioryCount");
             }
         }
 
